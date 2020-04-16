@@ -15,16 +15,16 @@
   <body>
     {% block content %}
     <h1 class="text-center">Our wonder pet-pals!</h1>
-
-    {% for pet in pets %}
-    <div class="each-pet">
-      <h4>Meet {{pet.name}}!</h4>
-      <img src="{{pet.photo_url}}" height="300px" width="300px" alt="picture of a dog" />
-      <p>Is available? {{pet.available}}</p>
+    <div class="row all-pets">
+      {% for pet in pets %}
+      <div class="each-pet p-2 col-3">
+        <h4>Meet <a href="/{{pet.id}}">{{pet.name}}!</a></h4>
+        <img class="img-thumbnail" src="{{pet.photo_url}}" height="300px" width="300px" alt="" />
+        {% if pet.available %} <b class="text-success"> Available!</b> {% endif %}
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
     <a href="/add" class="btn btn-outline-success">Have your own pet to put up for adoption? Add now!</a>
-
     {% endblock %}
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script
